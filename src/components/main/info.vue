@@ -5,6 +5,15 @@
 </template>
 <script>
 export default {
-  name: 'info'
+  name: 'info',
+  data() {
+    return {
+      
+    }
+  },
+  mounted(){
+    // console.log(this.$apis.getItem())
+    this.$apis.getItem()
+  }
 }
 </script>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import home from '@/components/home'
 Vue.use(Router)
-export default new Router({
+const ruoters=new Router({
   routes: [{
     path: '/',
     name: 'home',
@@ -36,4 +36,25 @@ export default new Router({
     }
     ]
   }]
+})
+console.log(ruoters)
+ruoters.beforeEach((to,from,next)=>{
+  console.log(to.path)
+  if(to.path=="/"){
+    if(location.search.indexOf("news")!=-1){
+      next({path:"/news"});
+    }else if(location.search.indexOf("info")!=-1){
+      next({path:"/info"});
+    }else if(location.search.indexOf("test")!=-1){
+      next({path:"/test"});
+    }else{
+      next(); 
+    }
+  }else{
+    next();  //前往下一个路由
+  }
+})
+export default ruoters
+ruoters.afterEach((to,from)=>{
+  console.log("跳转之后执行")
 })
