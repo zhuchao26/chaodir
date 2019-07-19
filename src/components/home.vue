@@ -1,38 +1,38 @@
 <template>
-  <div class="hello">
-    <div>
-      <ul>
-        <li v-for="(i,d) in msg" :key="d" @click="a"><router-link :to="i">{{i.substr(1)}}</router-link></li>
-      </ul>
-    </div>
-    <router-view></router-view>
+  <div id="app">
+         <router-view />
+         <div id="cheng"></div>
+    <item1></item1>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'home',
+  name: 'HelloWorld',
   data () {
     return {
-      msg: [
-        '/info', '/news', '/test'
-      ]
+      msg: 'Welcome to Your Vue.js App'
     }
   },
-  methods: {
-    a () {
-      console.log(this.msg)
-    }
+  mounted(){
+      this.$eventHub.$on("test",(res)=>{
+        alert(res);
+      });
+  },
+  components:{
+    
   }
 }
 </script>
-<style>
-  li{
-    float: left;
-    list-style: none;
-    padding-right: 10px;
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+
+#app{
+  width:r(375);
+  height:100%;
+  #cheng{
+    height:r(53)
   }
-  ul{
-    height: 20px;
-    border: 1px solid red;
-  }
+}
 </style>

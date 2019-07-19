@@ -1,60 +1,50 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import home from '@/components/home'
+import global from "@/core/global"
+// console.log(global.getParam())
 Vue.use(Router)
-const ruoters=new Router({
-  routes: [{
-    path: '/',
-    name: 'home',
-    component: resolve => require(['@/components/home'], resolve),
-    children: [{
-      path: 'info',
-      name: 'info',
-      component: resolve => require(['@/components/main/info'], resolve)
-    },
+
+ const routers=new Router({
+  routes: [
     {
-      path: 'news',
-      name: 'news',
-      component: resolve => require(['@/components/main/news'], resolve),
-      redirect: 'news/guonei',
-      children: [{
-        path: 'guonei',
-        name: 'guonei',
-        component: resolve => require(['@/components/main/guonei'], resolve)
-      },
-      {
-        path: 'guowai',
-        name: 'guowai',
-        component: resolve => require(['@/components/main/guowai'], resolve)
-      }
+      path: '/',
+      name: 'home',
+      component: resolve => require(['@/components/home'], resolve),
+      // 重定向 如果是/ 显示info页
+      redirect: "index",
+      children:[
+        {
+          path:"index",
+          name: 'index',
+          meta:{
+            keepAlive:true
+          },
+          //keepAlive true 禁止重复加载  false不禁止
+          component: resolve => require(['@/components/main/index'], resolve)
+        },
+        {
+          path:"goods",
+          name: 'goods',
+          component: resolve => require(['@/components/main/goods'], resolve),
+        },
+        {
+          path:"shop",
+          name: 'shop',
+          component: resolve => require(['@/components/main/shop'], resolve)
+        },
+        {
+          path:"my",
+          name: 'my',
+          component: resolve => require(['@/components/main/my'], resolve)
+        },
+        {
+          path:"show",
+          name: 'show',
+          component: resolve => require(['@/components/main/show'], resolve)
+        }
       ]
-    },
-    {
-      path: 'test',
-      name: 'test',
-      component: resolve => require(['@/components/main/test'], resolve)
     }
-    ]
-  }]
+  ]
 })
-console.log(ruoters)
-ruoters.beforeEach((to,from,next)=>{
-  console.log(to.path)
-  if(to.path=="/"){
-    if(location.search.indexOf("news")!=-1){
-      next({path:"/news"});
-    }else if(location.search.indexOf("info")!=-1){
-      next({path:"/info"});
-    }else if(location.search.indexOf("test")!=-1){
-      next({path:"/test"});
-    }else{
-      next(); 
-    }
-  }else{
-    next();  //前往下一个路由
-  }
-})
-export default ruoters
-ruoters.afterEach((to,from)=>{
-  console.log("跳转之后执行")
-})
+
+export default routers

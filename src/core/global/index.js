@@ -1,4 +1,4 @@
-class Global {//自定义全局方法,在全局都可用,不用暴露,直接用.
+class Global {
     getParam() {
         //将url后面的参数 ?name=msea&sex=1  >{name:"msea",sex:1}
         var search = {};

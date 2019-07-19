@@ -3,12 +3,20 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-const URL = "https://cnodejs.org";
+
+// https://m.bestcake.com/
+// https://m.bestcake.com/
+const URL = "https://m.bestcake.com";
+
+// const URL = "http://127.0.0.1";
 module.exports = {
   dev: {
+
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+
+    // 配置webpack 代理
     proxyTable: {
       '/apis': {
         target: URL, // 需要进行代理跨域主机
@@ -28,13 +36,6 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    // Use Eslint Loader?
-    // If true, your code will be linted during bundling and
-    // linting errors and warnings will be shown in the console.
-    useEslint: true,
-    // If true, eslint errors and warnings will also be shown in the error overlay
-    // in the browser.
-    showEslintErrorsInOverlay: false,
 
     /**
      * Source Maps

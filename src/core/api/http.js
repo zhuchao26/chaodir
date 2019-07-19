@@ -1,9 +1,15 @@
-import axios from 'axios'
-//const baseURL=location.host.indexOf(".com")!=-1?"":"/apis";//服务器的结尾一般是.com 这是为了服务端设置
-var instance=axios.create({
+import axios from "axios"
+
+const baseURL=location.host.indexOf(".com")!=-1?"":"/apis";
+// const baseURL= location.host.indexOf("8899")!=-1?"/apis":"";
+// const baseURL="/apis";
+
+
+// https://cnodejs.org
+var instance = axios.create({
     // 设置主机
     // http://10.41.151.141:8899/apis
-    baseURL:'/apis',
+    baseURL,
     //设置超时时间
     // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)
     // 如果请求话费了超过 `timeout` 的时间，请求将被中断
@@ -25,4 +31,5 @@ var instance=axios.create({
     }],
     responseType: 'json'
 })
-export default instance;
+
+export default instance

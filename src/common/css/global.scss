@@ -1,0 +1,57 @@
+/*全局样式定义*/
+.float-r {
+    float: right;
+}
+.float-l {
+    float: left;
+}
+.colorf {
+    color: #fff;
+}
+.fs12 {
+    font-size: 0.32rem;
+}
+.fs14 {
+    font-size: 0.37334rem;
+}
+.fs16 {
+    font-size: 4.2667vw;
+}
+.clear-both::after {
+    clear: both;
+    display: block;
+    content: '';
+}
+.color3 {
+    color: #333;
+}
+.color9 {
+    color: #999;
+}
+.colorcc2 {
+    color: #CC2825;
+}
+.addres {
+    max-width: 6.4rem;
+}
+.locImgr {
+    margin-left: .10667rem;
+}
+.locImg2 {
+    width: .5rem
+}
+.locImg {
+    height: .58667rem;
+    margin-top: .29335rem;
+}
+a, ins {
+    text-decoration: none;
+}
+.mint-tab-item{
+    background: #fff;
+  }
+  .fa-lg {
+    font-size: 1.5em;
+    line-height: 2.6em;
+    vertical-align: -6%;
+}
