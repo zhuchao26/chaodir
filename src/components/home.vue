@@ -2,7 +2,7 @@
   <div id="app">
          <router-view />
          <div id="cheng"></div>
-    <item1></item1>
+    <item1 v-show="$route.path!='/show'"></item1>
   </div>
 </template>
 

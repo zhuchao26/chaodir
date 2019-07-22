@@ -16,7 +16,23 @@ const state = {
 const mutations={
     // 没有第三个参数
    add(state,data){
-       
+    let bool = true;
+    state.cartList.map((item, index) => {
+      if (data.Id == item.Id) {
+          if (data.num==1) {
+            item.num++;
+            bool = false;
+          }else{
+              item.num+=data.num;
+              bool = false;
+          }
+      }
+    });
+    if (bool) {
+      data.num = this.num || 1;
+      state.cartList.push(data);
+      console.log(state.cartList);
+    }
    }
 }
 // 定义 compunted  属性计算

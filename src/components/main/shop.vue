@@ -1,16 +1,24 @@
 <template>
   <div>
     我是购物车
+    <div v-if="cartList">
+      <div v-for="(item,index) in cartList" :key="index">
+      <h1>{{item.Name}}</h1>
+      <p>{{item.num}}</p>
+    </div>
+    </div>
+    
   </div>
 </template>
 <script>
-import { mapState, mapActions, mapGetters, mapMutations } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      cartList:[],
+    };
   },
   mounted() {
-   
+   this.cartList=this.$store.state.cartList;
   },
   computed: {
    

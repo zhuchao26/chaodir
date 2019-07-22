@@ -1,14 +1,15 @@
 <template>
   <div id="goods">
-    <div>
-      <button @click="sel(1)">自营</button>
-      <button @click="sel(2)">贝斯严选</button>
+    <div class="list-tabs">
+      <div @click="sel(1)" class="list-tabs-a" :class="{'active':cindex==1}">自营</div>
+      <div @click="sel(2)" class="list-tabs-b" :class="{'active':cindex==2}">贝斯严选</div>
+      <div class="list-tabs-c">&nbsp;</div>
     </div>
-    <div v-if="cindex==1">
-      <button v-for="(item,index) in tabList" :key="index" @click="sec(index)">{{item}}</button>
+    <div v-if="cindex==1" class="list-classify">
+      <div v-for="(item,index) in tabList" :key="index" @click="sec(index)" :class="{'active':acti==index}" class="float-l list-classify-a">{{item}}</div>
     </div>
-    <div v-if="cindex==2">
-      <button v-for="(item,index) in tabList2" :key="index">{{item}}</button>
+    <div v-if="cindex==2" class="list-classify">
+      <div v-for="(item,index) in tabList2" :key="index" class="active list-classify-a">{{item}}</div>
     </div>
     <div style="overflow: hidden;">
       <div v-for="(item,index) in cakelist" :key="index" class="list-product-tab">
@@ -25,7 +26,7 @@
             <span style="color: rgb(255, 51, 0); font-size: 3.2vw;">.00</span> 
             <span style="color: rgb(188, 188, 188); font-size: 3.2vw; margin-left: 1.067vw;" v-text="item.Size"></span>
             </div>
-            <div class="list-product-e">
+            <div class="list-product-e" @click="addcart(item)">
           <img src="https://res.bestcake.com\m-images-2\list-cart.png?v=1" class="am-img-responsive">
         </div>
       </div>
@@ -48,13 +49,30 @@ export default {
       jingdian: [],
       bsl: [],
       rp: [],
-      cindex: 1
+      cindex: 1,
+      acti:0,
     };
   },
   mounted() {
     this.pageInit();
   },
   methods: {
+    addcart(it){
+      let bool=true;
+      console.log(it)
+      // this.$store.state.cartList.map((item,index)=>{
+      //   if (this.showTypes[this.sizeNum].Id==item.Id) {
+      //     console.log(11)
+      //     item.num+=this.num;
+      //     bool=false;
+      // }
+      // })
+      // if (bool) {
+      //   this.showTypes[this.sizeNum].num=this.num||1;
+      //   this.$store.state.cartList.push(this.showTypes[this.sizeNum])
+      //   console.log(this.$store.state.cartList)
+      // }
+    },
     sel(data) {
       this.cindex = data;
       this.cakelist=this.jingdian;
@@ -62,7 +80,11 @@ export default {
         this.cakelist=this.rp;
       }
     },
+    act(data) {
+      this.acti = data;
+    },
     sec(data){
+      this.act(data)
       console.log("ok")
       if (data==1) {
         this.cakelist=this.nvshen;
@@ -129,6 +151,63 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 #goods{
+  .list-tabs {
+    .active {
+    color: #1db0b8;
+}
+    position: relative;
+    height: 9.33vw;
+    border-bottom: 1px solid #d9d9d9;
+    height: 12vw;
+    .list-tabs-a {
+    width: 50%;
+    float: left;
+    font-size: 4.266vw;
+    text-align: center;
+    height: 8.533vw;
+    height: 13vw;
+    line-height: 12vw;
+}
+.list-tabs-b {
+    width: 50%;
+    float: right;
+    font-size: 4.266vw;
+    text-align: center;
+    height: 8.533vw;
+    height: 13vw;
+    line-height: 12vw;
+}
+.list-tabs-c {
+    width: 50%;
+    height: 0.533vw;
+    background: #1db0b8;
+    position: absolute;
+    bottom: 0;
+    transition: left 0.35s;
+}
+.list-tabs-b.active ~ .list-tabs-c {
+    right: 0;
+}
+.list-tabs-a.active ~ .list-tabs-c {
+    left: 0;
+}
+
+}
+.list-classify {
+    margin-top: 7.466vw;
+    height: 5.8667vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .active {
+    font-size: 4.266vw;
+    font-weight: bold;
+    border-bottom:#1db0b8 solid 2px;
+}
+.list-classify-a {
+    margin-right: r(20)
+}
+}
 
   .list-product-tab:nth-child(2n+1) {
     margin-right: 8.8vw;
@@ -165,7 +244,7 @@ export default {
 }
 .list-product-e {
     width: 5.334vw;
-    height: 5.334vw;
+    height: 3.334vw;
     position: absolute;
     right: 0vw;
     bottom: 1vw;
