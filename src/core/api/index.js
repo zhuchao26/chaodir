@@ -1,4 +1,5 @@
 import request from "./http"
+import mock from '@/mock'
 class Apis {
     // json1811.ashx?v=1562741893374&c=NewIndexController&m=index
     getIndexData() {
@@ -30,5 +31,16 @@ class Apis {
             params
         });
     }
+    edit(data){
+		return mock.post("/edit",{
+          params: data
+        })
+	}
+	
+	login(data){
+		return mock.post("/login",{
+          params: data
+        })
+	}
 }
 export default new Apis();

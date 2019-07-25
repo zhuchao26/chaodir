@@ -1,119 +1,157 @@
 /*全局样式定义*/
 .float-r {
-    float: right;
-}
-.float-l {
-    float: left;
-}
-.colorf {
-    color: #fff;
-}
-.fs12 {
-    font-size: 0.32rem;
-}
-.fs14 {
-    font-size: 0.37334rem;
-}
-.fs16 {
-    font-size: 4.2667vw;
-}
-.clear-both::after {
-    clear: both;
-    display: block;
-    content: '';
-}
-.color3 {
-    color: #333;
-}
-.color9 {
-    color: #999;
-}
-.colorcc2 {
-    color: #CC2825;
-}
-.addres {
-    max-width: 6.4rem;
-}
-.locImgr {
-    margin-left: .10667rem;
-}
-.locImg2 {
-    width: .5rem
-}
-.locImg {
-    height: .58667rem;
-    margin-top: .29335rem;
-}
-a, ins {
-    text-decoration: none;
-}
-.mint-tab-item{
-    background: #fff;
-  }
-  .fa-lg {
-    font-size: 1.5em;
-    line-height: 2.6em;
-    vertical-align: -6%;
-}
-.clplr {
-    padding-left: 0;
-    padding-right: 0;
-}
-.bgw {
-    background: white;
-}
-.mt4 {
-    margin-top: 4vw;
-}
-.am-u-sm-12 {
-    width: 100%;
-}
-.cake-info-datum-list {
-    clear: both;
-    .cake-info-left {
-        font-size: 3.73vw;
-        float: left;
-        width: 15.93vw;
-        margin-left: 4vw;
-    }
-    .cake-info-datum-list .cake-info-right {
-        font-size: 3.73vw;
-        float: left;
-        width: 72vw;
-        margin-left: 4vw;
-        margin-right: 4vw;
-    }
-}
-.cake-info-datum-a {
-    margin-bottom: 2.93vw;
-    margin-top: 9.066vw;
+  float: right;
 }
 
-.cake-info-datum-b {
-    margin-bottom: 4vw;
+.float-l {
+  float: left;
 }
-.cake-info-datum-c {
-    margin-bottom: 4vw;
+
+.colorf {
+  color: #fff;
 }
-.cake-info-datum-d {
-    margin-bottom: 4vw;
+
+.fs12 {
+  font-size: 0.32rem;
 }
-.cake-info-datum-e {
-    margin-bottom: 9.066vw;
+
+.fs14 {
+  font-size: 0.37334rem;
 }
-.qfc {
-    color: #9A9A9A;
+
+.fs16 {
+  font-size: 4.2667vw;
 }
-.hfc {
-    color: #252525;
+
+.clear-both::after {
+  clear: both;
+  display: block;
+  content: '';
 }
-.p4 {
-    padding: 4vw;
+
+.color3 {
+  color: #333;
 }
-.cake-info-datum-list .cake-info-right {
+
+.color9 {
+  color: #999;
+}
+
+.colorcc2 {
+  color: #CC2825;
+}
+
+.addres {
+  max-width: 6.4rem;
+}
+
+.locImgr {
+  margin-left: .10667rem;
+}
+
+.locImg2 {
+  width: .5rem
+}
+
+.locImg {
+  height: .58667rem;
+  margin-top: .29335rem;
+}
+
+a,
+ins {
+  text-decoration: none;
+}
+
+.mint-tab-item {
+  background: #fff;
+}
+
+.fa-lg {
+  font-size: 1.5em;
+  line-height: 2.6em;
+  vertical-align: -6%;
+}
+
+.clplr {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bgw {
+  background: white;
+}
+
+.mt4 {
+  margin-top: 4vw;
+}
+
+.am-u-sm-12 {
+  width: 100%;
+}
+
+.cake-info-datum-list {
+  clear: both;
+
+  .cake-info-left {
+    font-size: 3.73vw;
+    float: left;
+    width: 15.93vw;
+    margin-left: 4vw;
+  }
+
+  .cake-info-datum-list .cake-info-right {
     font-size: 3.73vw;
     float: left;
     width: 72vw;
     margin-left: 4vw;
     margin-right: 4vw;
+  }
+}
+
+.cake-info-datum-a {
+  margin-bottom: 2.93vw;
+  margin-top: 9.066vw;
+}
+
+.cake-info-datum-b {
+  margin-bottom: 4vw;
+}
+
+.cake-info-datum-c {
+  margin-bottom: 4vw;
+}
+
+.cake-info-datum-d {
+  margin-bottom: 4vw;
+}
+
+.cake-info-datum-e {
+  margin-bottom: 9.066vw;
+}
+
+.qfc {
+  color: #9A9A9A;
+}
+
+.hfc {
+  color: #252525;
+}
+
+.p4 {
+  padding: 4vw;
+}
+
+.cake-info-datum-list .cake-info-right {
+  font-size: 3.73vw;
+  float: left;
+  width: 72vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
+}
+
+#app {
+  .mint-tabbar.is-fixed {
+    bottom: -.290em
+  }
 }

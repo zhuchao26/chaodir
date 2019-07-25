@@ -41,6 +41,16 @@ Vue.use(Router)
           path:"show",
           name: 'show',
           component: resolve => require(['@/components/main/show'], resolve)
+        },
+        {
+          path:"edit",
+          name: 'edit',
+          component: resolve => require(['@/components/main/edit'], resolve)
+        },
+        {
+          path:"login",
+          name: 'login',
+          component: resolve => require(['@/components/main/login'], resolve)
         }
       ]
     }

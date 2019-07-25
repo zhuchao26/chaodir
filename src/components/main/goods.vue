@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
@@ -57,21 +58,25 @@ export default {
     this.pageInit();
   },
   methods: {
-    addcart(it){
+    addcart(item){
       let bool=true;
-      console.log(it)
-      // this.$store.state.cartList.map((item,index)=>{
-      //   if (this.showTypes[this.sizeNum].Id==item.Id) {
-      //     console.log(11)
-      //     item.num+=this.num;
-      //     bool=false;
-      // }
-      // })
-      // if (bool) {
-      //   this.showTypes[this.sizeNum].num=this.num||1;
-      //   this.$store.state.cartList.push(this.showTypes[this.sizeNum])
-      //   console.log(this.$store.state.cartList)
-      // }
+      Toast({
+					message: item.Name+"已加入购物车",
+					position: 'center',
+					duration: 1000,
+				});
+				//console.log(item)
+				let data = {
+					City: this.$store.state.city,
+					SupplyNo: item.SupplyNo,
+					Name: item.Name,
+					id: item.ID,
+					currentPrice: item.CurrentPrice,
+					Ename: item.Ename,
+					Size: item.Size,
+					sele:true, 
+				}
+				this.$store.commit("add", data)
     },
     sel(data) {
       this.cindex = data;
@@ -85,7 +90,6 @@ export default {
     },
     sec(data){
       this.act(data)
-      console.log("ok")
       if (data==1) {
         this.cakelist=this.nvshen;
       }else if (data==2) {
@@ -130,7 +134,6 @@ export default {
           }
         });
         this.cakelist=this.jingdian;
-        console.log(this.cakelist)
         // this.cakelist.push(this.jingdian)
         // this.cakelist.push(this.nvshen)
         // this.cakelist.push(this.bsl)

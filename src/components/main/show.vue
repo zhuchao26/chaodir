@@ -162,14 +162,15 @@ export default {
     addCart() {
       let temp = {
         City: this.$store.state.city,
+        sele:true,
         SupplyNo: this.$route.query.SupplyNo,
         Name: this.showInfo.Name,
         id:this.showTypes[this.sizeNum].Id,// size ID
         CurrentPrice: this.showTypes[this.sizeNum].CurrentPrice,
-        num:this.num
+        num:this.num,
+        mark:"show"
       };
       // console.log(temp)
-      return;
       this.$store.commit("add",temp)
       
     },

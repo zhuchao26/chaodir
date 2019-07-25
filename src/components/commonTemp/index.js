@@ -2,7 +2,7 @@ import item1 from "@/components/main/item1"
 import swiper from "@/components/layout/swiper"
 import { Button } from 'mint-ui'
 import { Swipe, SwipeItem } from 'mint-ui';
-import { Tabbar, TabItem } from 'mint-ui';
+import { Tabbar, TabItem ,Cell ,Checklist ,Field} from 'mint-ui';
 
 
 export default (Vue)=>{
@@ -12,5 +12,8 @@ export default (Vue)=>{
      Vue.component(SwipeItem.name, SwipeItem);
      Vue.component(Tabbar.name, Tabbar);
      Vue.component(TabItem.name, TabItem);
-     Vue.component("swiper",swiper)
+     Vue.component("swiper",swiper);
+     Vue.component(Checklist.name, Checklist);
+	Vue.component(Cell.name, Cell);
+	Vue.component(Field.name, Field);
 }

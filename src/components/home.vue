@@ -11,13 +11,10 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   },
   mounted(){
-      this.$eventHub.$on("test",(res)=>{
-        alert(res);
-      });
+      console.log(this.$route)
   },
   components:{
     

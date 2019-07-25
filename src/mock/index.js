@@ -6,15 +6,36 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter';
 // 初始化 拦截器对象
 let mock = new MockAdapter(axios);
-
+var user=UsersData;
 // 模拟get请求
 mock.onGet('/login').reply(config => {
-  console.log("run");
   // 接口传入数据在 config下面获取
   // console.log(config);
   // console.log(UsersData)
   // [状态码,UsersData[0]]
-  return [200,UsersData];
+  return new Promise(res=>{
+    var userInfo=JSON.parse(config.data).params;
+    user.forEach(item => {
+      if (item.username==userInfo.username) {
+        if (item.password==userInfo.password) {
+          res([200,{code:1,msg:'登陆成功',data:item}])
+        }else{
+          res([200,{code:2,msg:'密码错误'}])
+        }
+      }
+    });
+    res([200,{code:3,msg:'帐号不存在'}])
+  })
+})
+mock.onPost('/edit').reply(config => {
+
+	user.push(JSON.parse(config.data).params);
+  let n=user.length;
+	// 接口传入数据在 config下面获取
+	// console.log(config);
+	// console.log(UsersData)
+	// [状态码,UsersData[0]]
+	return [200, user[n-1]];
 })
 
 export default axios;	//注意暴露axios

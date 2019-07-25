@@ -1,65 +1,71 @@
-
-
 import Vuex from "vuex";
 import Vue from "vue";
 import apis from "@/core/api"
-import { Indicator } from 'mint-ui';
+import {
+  Indicator,
+  MessageBox
+} from 'mint-ui';
+import store from 'storejs';
 Vue.use(Vuex);
 // Vuex作用是什么? 全局状态管理
 
 //理解为 组件内部  data 属性
 const state = {
-    city: "上海",
-    cartList: []
+  city: "上海",
+  cartList: []
 }
 //定义  methods 同步方法   视图调用     this.$store.commit("xxxx",val)
-const mutations={
-    // 没有第三个参数
-   add(state,data){
-    let bool = true;
-    state.cartList.map((item, index) => {
-      if (data.Id == item.Id) {
-          if (data.num==1) {
-            item.num++;
-            bool = false;
-          }else{
-              item.num+=data.num;
-              bool = false;
+const mutations = {
+  // 没有第三个参数
+  add(state, data) {
+    let flag = true;
+    if (state.cartList.length != 0) {
+      state.cartList.map(item => {
+        if (item.id == data.id) {
+          if (data.mark == "show") {
+            item.num = item.num + data.num;
+            flag = false;
+            return;
           }
-      }
-    });
-    if (bool) {
-      data.num = this.num || 1;
-      state.cartList.push(data);
-      console.log(state.cartList);
+          item.num++;
+          flag = false;
+        }
+      })
     }
-   }
+    if (flag) {
+      data.num = data.num || 1
+      state.cartList.push(data)
+    }
+    store.set("cartList", state.cartList)
+  },
+  vuexInit(state) {
+    if (store.get("cartList")) {
+      state.cartList = store.get("cartList");
+      // console.log(state.cartList)
+    }
+  },
+  alt(state) {
+    MessageBox.confirm('是否删除此商品?').then(action => {
+      store.remove(infoList);
+      state.cartList.map((it, i) => {
+        if (it.num == 0) {
+          state.cartList.splice(i, 1)
+        }
+      })
+      store.set(infoList, state.cartList)
+    });
+  }
 }
 // 定义 compunted  属性计算
-const getters={
-   
+const getters = {
 }
 // --------------
 //定义 异步方法 通用接口调用    视图调用     this.$store.dispatch("xxxx",val)
-const actions={
-    test(context,data){
-        console.log(context)  //可以调用  mutations 方法    actions调actions自己的方法,也可以使用 getters,也可以使用state
-        // apis.getItem().then((res)=>{
-            // console.log(res)
-        // })
-    },
-    test2(context,data){
-        console.log("run");
-        Indicator.open("加载中...")
-      setTimeout(()=>{
-        Indicator.close()
-        context.state.isTopic=true;
-      },5000)
-    }
+const actions = {
 }
 export default new Vuex.Store({
-    state,
-    mutations,
-    getters,
-    actions
+  state,
+  mutations,
+  getters,
+  actions
 })
